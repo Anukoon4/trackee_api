@@ -68,25 +68,28 @@ app.get('/servertime', function (req, res) {
   res.send(long_date.toString());
 });
 
-
+app.listen(config.port, function () {
+            console.log('Server listening on port %d', this.address().port);
+          })
+          
 const url = 'mongodb://localhost:27017';
 var count = config.mongodb.length;
 
-config.mongodb.forEach(function (db_config) {
-  MongoClient.connect(url,{ useNewUrlParser: true }, function (err, client) {
-    if (!err) {
-      count--
-      console.log("Connected successfully to server");
-      mongodb[db_config.db] = client.db(db_config.db);
+// config.mongodb.forEach(function (db_config) {
+//   MongoClient.connect(url,{ useNewUrlParser: true }, function (err, client) {
+//     if (!err) {
+//       count--
+//       console.log("Connected successfully to server");
+//       mongodb[db_config.db] = client.db(db_config.db);
 
-      if (count == 0) {
-        app.listen(config.port, function () {
-          console.log('Server listening on port %d', this.address().port);
-        })
-      }
+//       if (count == 0) {
+//         app.listen(config.port, function () {
+//           console.log('Server listening on port %d', this.address().port);
+//         })
+//       }
 
 
-    }
-  })
+//     }
+//   })
 
-})
+// })
