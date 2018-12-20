@@ -73,7 +73,7 @@ const url = 'mongodb://localhost:27017';
 var count = config.mongodb.length;
 
 config.mongodb.forEach(function (db_config) {
-  MongoClient.connect(url, function (err, client) {
+  MongoClient.connect(url,{ useNewUrlParser: true }, function (err, client) {
     if (!err) {
       count--
       console.log("Connected successfully to server");
