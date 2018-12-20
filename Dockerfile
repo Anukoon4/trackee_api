@@ -8,4 +8,4 @@ RUN npm install
 
 COPY . /usr/src/app
 
-CMD ["node","server.js"]
+CMD ["npm","start"]
