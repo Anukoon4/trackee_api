@@ -66,6 +66,29 @@ were.post('/query', function (req, res) {
   })
 });
 
+were.post('/remove', function (req, res) {
+  let collection = req.collection;
+  let body = req.body;
+  let form ={
+    track:body.track
+  }
+
+  collection.deleteOne(form, function (err, resc) {
+    if (err) {
+      res.json({
+        'ok': false,
+        'message': err
+      });
+    } else {
+      var result = resc.result;
+      res.json({
+        'ok': result.ok == 1 ? true : false,
+      });
+    }
+  });
+});
+
+
 
 
 module.exports = were;

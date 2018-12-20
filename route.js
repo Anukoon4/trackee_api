@@ -78,7 +78,7 @@ router.post('/data/:id?', function (req, res) {
   });
 });
 
-router.delete('/data/:id', function (req, res) {
+router.post('/remove', function (req, res) {
   var key = req.params.id;
   var collection = req.collection;
   collection.deleteOne({ '_id': key }, function (err, resc) {

@@ -85,7 +85,6 @@ config.mongodb.forEach(function (db_config) {
         })
       }
 
-
     }
   })
 
