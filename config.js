@@ -1,6 +1,6 @@
 var _dbs = ['cores'];
 
-var uriQuerySet = "http://localhost:27017";
+var uriQuerySet = "http://104.248.146.244:27017";
 
 var mongodb = [];
 _dbs.forEach(function(dbName) {
