@@ -12,7 +12,7 @@ var were = require('./were');
 
 
 var mongodb = {};
-
+var mongo_new = {};
 var app = express();
 
 app.use(cors());
@@ -69,23 +69,34 @@ app.get('/servertime', function (req, res) {
 });
 
 
-const url = 'mongodb://localhost:27017';
+const url = 'mongodb://104.248.146.244:27017';
 var count = config.mongodb.length;
 
-config.mongodb.forEach(function (db_config) {
-  MongoClient.connect(url,{ useNewUrlParser: true }, function (err, client) {
-    if (!err) {
-      count--
-      console.log("Connected successfully to server");
-      mongodb[db_config.db] = client.db(db_config.db);
+// config.mongodb.forEach(function (db_config) {
+//   MongoClient.connect(url,{ useNewUrlParser: true }, function (err, client) {
+//     if (!err) {
+//       count--
+//       console.log("Connected successfully to server");
+//       mongodb[db_config.db] = client.db(db_config.db);
+//       console.log(mongodb)
 
-      if (count == 0) {
-        app.listen(config.port, function () {
-          console.log('Server listening on port %d', this.address().port);
-        })
-      }
+//       if (count == 0) {
+//         app.listen(config.port, function () {
+//           console.log('Server listening on port %d', this.address().port);
+//         })
+//       }
 
-    }
-  })
+//     }
+//   })
 
+// })
+
+const dbName = 'cores';
+MongoClient.connect(url, function(err, client) {
+
+  mongodb[dbName] = client.db(dbName)
+  console.log(mongodb)
+  app.listen(3000, function () {
+      console.log('Server listening on port %d', this.address().port);
+            })
 })
