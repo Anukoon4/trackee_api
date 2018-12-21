@@ -95,7 +95,6 @@ const dbName = 'cores';
 MongoClient.connect(url, function(err, client) {
 
   mongodb[dbName] = client.db(dbName)
-  console.log(mongodb)
   app.listen(3000, function () {
       console.log('Server listening on port %d', this.address().port);
             })
